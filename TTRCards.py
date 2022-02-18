@@ -5,6 +5,7 @@ ng = Cards(110,3)
 
 while true:
     
+    print("на столе" + string(self.DrawPile))
     choose = input("что хотим сделать?\n 1 - sbros s ruki\n 2 - взять со стола\n 3 - взять с верха колоды\n 4 - сдать карты")
     
     if choose == 1:
