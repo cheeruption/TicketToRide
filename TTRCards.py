@@ -16,40 +16,9 @@ class Cards(object):
                      
         self.shuffle(self.cards)
         
-        #city1, city2, pointValue
-        self.tickets = [('Los Angeles',    'New York City', 21), 
-                        ('Duluth',         'Houston',        8), 
-                        ('Sault St Marie', 'Nashville',      8), 
-                        ('New York',       'Atlanta',        6), 
-                        ('Portland',       'Nashville',     17), 
-                        ('Vancouver',      'Montreal',      20), 
-                        ('Duluth',         'El Paso',       10), 
-                        ('Toronto',        'Miami',         10), 
-                        ('Portland',       'Phoenix',       11), 
-                        ('Dallas',         'New York City', 11), 
-                        ('Calgary',        'Salt Lake City', 7), 
-                        ('Calgary',        'Phoenix',       13), 
-                        ('Los Angeles',    'Miami',         20), 
-                        ('Winnipeg',       'Little Rock',   11), 
-                        ('San Francisco',  'Atlanta',       17), 
-                        ('Kansas City',    'Houston',        5), 
-                        ('Los Angeles',    'Chicago',       16), 
-                        ('Denver',         'Pittsburgh',    11), 
-                        ('Chicago',        'Santa Fe',       9), 
-                        ('Vancouver',      'Santa Fe',      13), 
-                        ('Boston',         'Miami',         12), 
-                        ('Chicago',        'New Orleans',    7), 
-                        ('Montreal',       'Atlanta',        9), 
-                        ('Seattle',        'New York',      22), 
-                        ('Denver',         'El Paso',        4), 
-                        ('Helena',         'Los Angeles',    8), 
-                        ('Winnipeg',       'Houston',       12), 
-                        ('Montreal',       'New Orleans',   13), 
-                        ('Sault St Marie', 'Oklahoma City',  9),
-                        ('Seattle',        'Los Angeles',    9)
-                        ]
-        
         self.shuffle(self.tickets)
+        #city1, city2, pointValue
+       
         
         self.drawPile          = []
         self.discardPile       = []
@@ -72,26 +41,12 @@ class Cards(object):
         except IndexError:
             print "\n There are no more cards in the deck! \n"
     
-    def dealTicket(self):
-        """returns a single destination ticket"""
-        if len(self.tickets) == 0:
-            self.restockTickets()
-        try:
-            return self.tickets.pop()
-        except IndexError:
-            print "\n There are no more tickets in the deck! \n"
-    
     def dealCards(self, numCards):
         """returns a list of (numCards) cards
         numCards: int
         """
         return [self.dealCard() for x in range(numCards)]
     
-    def dealTickets(self, numTickets):
-        """returns a set of (numTickets) tickets
-        numTickets: int
-        """
-        return [self.dealTicket() for x in range(numTickets)]
     
     def pickFaceUpCard(self, card):
         """returns one card from draw pile
@@ -147,27 +102,10 @@ class Cards(object):
             nextCard = self.dealCard()
             if nextCard != None:
                 self.drawPile.append(nextCard)    
-        
-    def addToTicketDiscard(self, ticket):
-        """adds one or more cards to the discard pile
-        does not remove cards from source they came from
-        tickets: list of length > 0
-        """
-        self.ticketDiscardPile.append(ticket)
-    
-    def getTicketPointValue(self, ticket):
-        """returns the point value associated with the destination ticket
-        ticket: tuple(city1, city2, value)
-        """
-        return ticket[2]
     
     def cardsLeft(self):
         """returns the number of cards left in the cards pile"""
         return len(self.cards)
-    
-    def ticketsLeft(self):
-        """returns the number of tickets left in the tickets pile"""
-        return len(self.tickets)
     
     def restockCards(self):
         """used when cards is empty, 
@@ -178,19 +116,6 @@ class Cards(object):
         self.shuffle(self.cards)
         self.discardPile = []
     
-    def restockTickets(self):
-        """used when tickets is empty, 
-        restocks tickets with ticket discard pile and shuffles
-        """
-        assert len(self.tickets) == 0
-        self.tickets = self.ticketDiscardPile
-        self.shuffle(self.tickets)
-        self.ticketDiscardPile = []
-    
-    def numTicketsLeftToDeal(self):
-        if len(self.tickets) == 0:
-            self.restockTickets()
-        return len(self.tickets)
         
     def isEmpty(self, pile):
         return len(pile) == 0
