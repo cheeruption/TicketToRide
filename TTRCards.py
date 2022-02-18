@@ -1,6 +1,29 @@
 
 import random
 
+ng = Cards(110,3)
+
+while true:
+    
+    choose = input("что хотим сделать?\n 1 - sbros s ruki\n 2 - взять со стола\n 3 - взять с верха колоды\n 4 - сдать карты")
+    
+    if choose == 1:
+        sbros_s_ruki = input("какие скинуть в сброс в формате wild,red")
+        ng.addToDiscard(sbros_s_ruki)
+    if choose == 2:
+        zabral_so_stola = input("какие карты взял в формате red,red")
+        ng.pickFaceUpCard(zabral_so_stola)
+    if choose == 3:
+        vzyat_iz_kolodi = input("сколько карт с верха взять")
+        ng.dealCards(vzyat_iz_kolodi)
+    if choose == 4:
+        ng.DealCards(5)
+
+    
+    
+    
+
+
 class Cards(object):
     def __init__(self, sizeDrawPile, maxWilds):
         self.sizeDrawPile = sizeDrawPile
