@@ -1,24 +1,29 @@
 
 import random
 
-ng = Cards(110,3)
+ng = Cards(5,3)
 
-while true:
+while True:
+    print("\n\n")
+    print("на столе\n")
+    for each in ng.drawPile: print(str.upper(each) + "🔴")
+    choose = input("\nчто хотим сделать?\n 1 - sbros s ruki\n 2 - взять со стола\n 3 - взять с верха колоды\n 4 - сдать карты\n\n\n")
     
-    print("на столе" + string(self.DrawPile))
-    choose = input("что хотим сделать?\n 1 - sbros s ruki\n 2 - взять со стола\n 3 - взять с верха колоды\n 4 - сдать карты")
-    
-    if choose == 1:
+    if choose == "1":
         sbros_s_ruki = input("какие скинуть в сброс в формате wild,red")
-        ng.addToDiscard(sbros_s_ruki.split(","))
-    if choose == 2:
+        for each in sbros_s_ruki.split(","):
+          ng.addToDiscard(each)
+    if choose == "2":
         zabral_so_stola = input("какие карты взял в формате red,red")
-        ng.pickFaceUpCard(zabral_so_stola.split(","))
-    if choose == 3:
+        
+        for each in zabral_so_stola.split(","):
+          ng.pickFaceUpCard(each)
+    if choose == "3":
         vzyat_iz_kolodi = input("сколько карт с верха взять")
-        ng.dealCards(vzyat_iz_kolodi)
-    if choose == 4:
-        ng.DealCards(5)
+        print(ng.dealCards(int(vzyat_iz_kolodi)))
+    if choose == "4":
+        print(ng.dealCards(5))
+    print("\n\n####################\n")
 
    
 
