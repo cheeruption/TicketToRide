@@ -9,20 +9,17 @@ while true:
     
     if choose == 1:
         sbros_s_ruki = input("какие скинуть в сброс в формате wild,red")
-        ng.addToDiscard(sbros_s_ruki)
+        ng.addToDiscard(sbros_s_ruki.split(","))
     if choose == 2:
         zabral_so_stola = input("какие карты взял в формате red,red")
-        ng.pickFaceUpCard(zabral_so_stola)
+        ng.pickFaceUpCard(zabral_so_stola.split(","))
     if choose == 3:
         vzyat_iz_kolodi = input("сколько карт с верха взять")
         ng.dealCards(vzyat_iz_kolodi)
     if choose == 4:
         ng.DealCards(5)
 
-    
-    
-    
-
+   
 
 class Cards(object):
     def __init__(self, sizeDrawPile, maxWilds):
