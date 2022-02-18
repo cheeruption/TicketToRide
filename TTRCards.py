@@ -21,7 +21,7 @@ while true:
 
    
 
-class Cards(object):
+class Cards():
     def __init__(self, sizeDrawPile, maxWilds):
         self.sizeDrawPile = sizeDrawPile
         self.possibleColors = ["red",   "orange", "yellow", 
