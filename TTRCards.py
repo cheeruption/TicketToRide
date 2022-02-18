@@ -15,8 +15,7 @@ class Cards(object):
         self.maxWilds = maxWilds
                      
         self.shuffle(self.cards)
-        
-        self.shuffle(self.tickets)
+       
         #city1, city2, pointValue
        
         
